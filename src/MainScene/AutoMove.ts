@@ -1,33 +1,15 @@
 const { regClass, property } = Laya;
 
 @regClass()
-export class StartPanel extends Laya.Script {
+export class AutoMove extends Laya.Script {
     declare owner: Laya.Sprite;
+    private _moveSpeed: number = 20;
 
-    @property(Laya.Image)
-    public btn_Play: Laya.Image = null;
-    @property(Laya.Button)
-    public btn_AudioOn: Laya.Button = null;
-    @property(Laya.Button)
-    public btn_AudioOff: Laya.Button = null;
+    @property(String)
+    public text: string = "";
 
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
-    onAwake(): void {
-        this.btn_Play.on(Laya.Event.CLICK, this, this.btnPlayClick);
-        this.btn_AudioOn.on(Laya.Event.CLICK, this, this.btnAudioOnClick);
-        this.btn_AudioOff.on(Laya.Event.CLICK, this, this.btnAudioOffClick);
-    }
-    btnPlayClick() {
-        this.owner.visible = false;
-    }
-    btnAudioOnClick() {
-        this.btn_AudioOff.visible = true;
-        this.btn_AudioOn.visible = false;
-    }
-    btnAudioOffClick() {
-        this.btn_AudioOff.visible = false;
-        this.btn_AudioOn.visible = true;
-    }
+    //onAwake(): void {}
 
     //组件被启用后执行，例如节点被添加到舞台后
     //onEnable(): void {}
@@ -42,7 +24,9 @@ export class StartPanel extends Laya.Script {
     //onDestroy(): void {}
 
     //每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
-    //onUpdate(): void {}
+    onUpdate(): void {
+        this.owner.y += this._moveSpeed;
+    }
 
     //每帧更新时执行，在update之后执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
     //onLateUpdate(): void {}

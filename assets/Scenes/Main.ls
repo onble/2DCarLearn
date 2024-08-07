@@ -9,6 +9,43 @@
   "name": "Scene2D",
   "_$child": [
     {
+      "_$id": "j3fmgupx",
+      "_$type": "Sprite",
+      "name": "road",
+      "width": 1079.8870554908756,
+      "height": 1929.0508083774153,
+      "texture": {
+        "_$uuid": "fc54d87c-da1a-4b7b-b8da-47387095ce51",
+        "_$type": "Texture"
+      },
+      "_$comp": [
+        {
+          "_$type": "b5206236-1c3f-4f53-a3c8-65bfbfdf0898",
+          "scriptPath": "../src/MainScene/AutoMove.ts",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "_$id": "3zvrmmnc",
+      "_$type": "Sprite",
+      "name": "road(1)",
+      "y": -1929,
+      "width": 1079.8870554908756,
+      "height": 1929.0508083774153,
+      "texture": {
+        "_$uuid": "fc54d87c-da1a-4b7b-b8da-47387095ce51",
+        "_$type": "Texture"
+      },
+      "_$comp": [
+        {
+          "_$type": "b5206236-1c3f-4f53-a3c8-65bfbfdf0898",
+          "scriptPath": "../src/MainScene/AutoMove.ts",
+          "text": ""
+        }
+      ]
+    },
+    {
       "_$id": "pw48g50j",
       "_$type": "Sprite",
       "name": "StartPanel",
@@ -31,17 +68,6 @@
         }
       ],
       "_$child": [
-        {
-          "_$id": "j3fmgupx",
-          "_$type": "Sprite",
-          "name": "road",
-          "width": 1079.8870554908756,
-          "height": 1929.0508083774153,
-          "texture": {
-            "_$uuid": "fc54d87c-da1a-4b7b-b8da-47387095ce51",
-            "_$type": "Texture"
-          }
-        },
         {
           "_$id": "h6gy6t36",
           "_$type": "Image",
@@ -73,6 +99,7 @@
           "height": 328,
           "anchorX": 0.5,
           "anchorY": 0.5,
+          "mouseThrough": true,
           "centerX": 0,
           "skin": "res://38ae524b-99bf-4a19-bfc5-869fd87a53f6",
           "color": "#ffffff",
