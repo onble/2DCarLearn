@@ -21,8 +21,7 @@
       "_$comp": [
         {
           "_$type": "b5206236-1c3f-4f53-a3c8-65bfbfdf0898",
-          "scriptPath": "../src/MainScene/AutoMove.ts",
-          "text": ""
+          "scriptPath": "../src/MainScene/AutoMove.ts"
         }
       ]
     },
@@ -40,8 +39,7 @@
       "_$comp": [
         {
           "_$type": "b5206236-1c3f-4f53-a3c8-65bfbfdf0898",
-          "scriptPath": "../src/MainScene/AutoMove.ts",
-          "text": ""
+          "scriptPath": "../src/MainScene/AutoMove.ts"
         }
       ]
     },
@@ -51,6 +49,7 @@
       "name": "StartPanel",
       "width": 1080,
       "height": 1920,
+      "visible": false,
       "_mouseState": 2,
       "_$comp": [
         {
@@ -110,7 +109,25 @@
                 "_$uuid": "b6b97da8-5040-4f0b-9d96-642da603dd85",
                 "_$type": "AnimationController2D"
               },
-              "controllerLayers": []
+              "controllerLayers": [
+                {
+                  "_$type": "AnimatorControllerLayer2D",
+                  "name": "Base Layer",
+                  "states": [
+                    {
+                      "_$type": "AnimatorState2D",
+                      "name": "BtnPlay",
+                      "clipStart": 0,
+                      "clip": {
+                        "_$uuid": "e63106bf-c08c-4a61-b81c-4cd452083090",
+                        "_$type": "AnimationClip2D"
+                      },
+                      "soloTransitions": []
+                    }
+                  ],
+                  "defaultStateName": "BtnPlay"
+                }
+              ]
             }
           ]
         },
@@ -150,6 +167,39 @@
           "labelSize": 20,
           "labelAlign": "center",
           "labelVAlign": "middle"
+        }
+      ]
+    },
+    {
+      "_$id": "eaeyiztn",
+      "_$type": "Sprite",
+      "name": "player",
+      "x": 382,
+      "y": 1251,
+      "width": 120,
+      "height": 236,
+      "texture": {
+        "_$uuid": "f87b09a0-3955-4530-9a31-e158f1b16327",
+        "_$type": "Texture"
+      },
+      "_$comp": [
+        {
+          "_$type": "BoxCollider",
+          "x": 12,
+          "y": 17,
+          "label": "player",
+          "width": 94,
+          "height": 211
+        },
+        {
+          "_$type": "RigidBody",
+          "type": "kinematic",
+          "category": 32,
+          "mask": 6
+        },
+        {
+          "_$type": "0803f7b9-4ed0-4adf-bb7b-83cb5b64ba9a",
+          "scriptPath": "../src/MainScene/Player.ts"
         }
       ]
     }
