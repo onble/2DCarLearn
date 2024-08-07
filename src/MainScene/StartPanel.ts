@@ -19,6 +19,8 @@ export class StartPanel extends Laya.Script {
     }
     btnPlayClick() {
         this.owner.visible = false;
+        // 派发事件
+        Laya.stage.event("StartGame");
     }
     btnAudioOnClick() {
         this.btn_AudioOff.visible = true;

@@ -9,14 +9,20 @@ export class Player extends Laya.Script {
     /** 限制小汽车的横向移动距离 */
     private _playerMinx = 200;
     private _playerMaxX = 880;
+    private isStartGame = false;
 
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
         Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.MouseDown);
         Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.MouseUp);
+        // 事件监听
+        Laya.stage.on("StartGame", this, function () {
+            this.isStartGame = true;
+        });
         this._rig = this.owner.getComponent(Laya.RigidBody);
     }
     MouseDown() {
+        if (this.isStartGame == false) return;
         let mouseX = Laya.stage.mouseX;
         /** 转弯的方向 */
         let force = 0;
