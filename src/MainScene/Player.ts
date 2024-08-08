@@ -11,15 +11,26 @@ export class Player extends Laya.Script {
     private _playerMaxX = 880;
     private isStartGame = false;
 
+    // 车道信息
+    // x 260 450 640 820
+    // y 1360
+
+    private initXArr = [260, 450, 640, 820];
+
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
         Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.MouseDown);
         Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.MouseUp);
         // 事件监听
-        Laya.stage.on("StartGame", this, function () {
+        Laya.stage.on("StartGame", this, () => {
             this.isStartGame = true;
         });
+        // 获取自身Rigidbody组件
         this._rig = this.owner.getComponent(Laya.RigidBody);
+
+        // 随机小汽车的初始位置
+        const index = this.getRandom(0, this.initXArr.length - 1);
+        this.owner.pos(this.initXArr[index], 1360);
     }
     MouseDown() {
         if (this.isStartGame == false) return;
@@ -67,4 +78,15 @@ export class Player extends Laya.Script {
 
     //鼠标点击后执行。与交互相关的还有onMouseDown等十多个函数，具体请参阅文档。
     //onMouseClick(): void {}
+    /**
+     * 获取随机数，左闭右闭区间
+     * @param min 最小值
+     * @param max 最大值
+     * @returns
+     */
+    getRandom(min: number, max: number) {
+        let value = Math.random() * (max - min);
+        value = Math.round(value);
+        return min + value;
+    }
 }
