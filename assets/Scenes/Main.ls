@@ -44,12 +44,46 @@
       ]
     },
     {
+      "_$id": "eaeyiztn",
+      "_$type": "Sprite",
+      "name": "player",
+      "x": 450,
+      "y": 1360,
+      "width": 120,
+      "height": 236,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "texture": {
+        "_$uuid": "f87b09a0-3955-4530-9a31-e158f1b16327",
+        "_$type": "Texture"
+      },
+      "_$comp": [
+        {
+          "_$type": "BoxCollider",
+          "x": 12,
+          "y": 17,
+          "label": "player",
+          "width": 94,
+          "height": 211
+        },
+        {
+          "_$type": "RigidBody",
+          "type": "kinematic",
+          "category": 32,
+          "mask": 6
+        },
+        {
+          "_$type": "0803f7b9-4ed0-4adf-bb7b-83cb5b64ba9a",
+          "scriptPath": "../src/MainScene/Player.ts"
+        }
+      ]
+    },
+    {
       "_$id": "pw48g50j",
       "_$type": "Sprite",
       "name": "StartPanel",
       "width": 1080,
       "height": 1920,
-      "visible": false,
       "_mouseState": 2,
       "_$comp": [
         {
@@ -171,35 +205,32 @@
       ]
     },
     {
-      "_$id": "eaeyiztn",
+      "_$id": "q5crzyz0",
       "_$type": "Sprite",
-      "name": "player",
-      "x": 382,
-      "y": 1251,
-      "width": 120,
-      "height": 236,
+      "name": "Car_1",
+      "x": 196,
+      "y": 83.50000000000045,
+      "width": 136,
+      "height": 248,
       "texture": {
-        "_$uuid": "f87b09a0-3955-4530-9a31-e158f1b16327",
+        "_$uuid": "5fa07541-87ac-4d96-bf2b-5b4ea17c6539",
         "_$type": "Texture"
       },
       "_$comp": [
         {
+          "_$type": "5a0e7e81-e13d-42d9-a731-b57336953b45",
+          "scriptPath": "../src/MainScene/Car.ts",
+          "speed": 15
+        },
+        {
+          "_$type": "RigidBody"
+        },
+        {
           "_$type": "BoxCollider",
-          "x": 12,
-          "y": 17,
-          "label": "player",
-          "width": 94,
+          "x": 29,
+          "y": 20,
+          "width": 83,
           "height": 211
-        },
-        {
-          "_$type": "RigidBody",
-          "type": "kinematic",
-          "category": 32,
-          "mask": 6
-        },
-        {
-          "_$type": "0803f7b9-4ed0-4adf-bb7b-83cb5b64ba9a",
-          "scriptPath": "../src/MainScene/Player.ts"
         }
       ]
     }
