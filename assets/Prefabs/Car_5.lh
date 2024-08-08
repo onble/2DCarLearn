@@ -17,6 +17,7 @@
     },
     {
       "_$type": "RigidBody",
+      "type": "kinematic",
       "allowSleep": false
     },
     {

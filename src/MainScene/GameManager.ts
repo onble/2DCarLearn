@@ -18,12 +18,48 @@ export class GameManager extends Laya.Script {
     public Car_6: Laya.Prefab;
 
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
-    onAwake(): void {}
+    onAwake(): void {
+        let ranTime = this.getRandom(300, 800);
+        Laya.timer.loop(ranTime, this, () => {
+            this.spawn();
+            ranTime = this.getRandom(300, 800);
+        });
+    }
     spawn() {
         // x 190 380 570 760
-        let arrX = [190.38, 570, 760];
-        let y = -300;
-        let x = arrX[this.getRandom(0, arrX.length - 1)];
+        // 下面去随机生成的位置
+        const arrX = [190, 380, 570, 760];
+        const y = -300;
+        const x = arrX[this.getRandom(0, arrX.length - 1)];
+
+        // 下面去随机类型
+        const typeArr = [1, 2, 3, 4, 5, 6];
+        const typeIndex = this.getRandom(0, typeArr.length - 1);
+        switch (typeArr[typeIndex]) {
+            case 1:
+                this.create(this.Car_1, x, y);
+                break;
+            case 2:
+                this.create(this.Car_2, x, y);
+                break;
+            case 3:
+                this.create(this.Car_3, x, y);
+                break;
+            case 4:
+                this.create(this.Car_4, x, y);
+                break;
+            case 5:
+                this.create(this.Car_5, x, y);
+                break;
+            case 6:
+                this.create(this.Car_6, x, y);
+                break;
+        }
+    }
+    create(prefab: Laya.Prefab, x: number, y: number) {
+        let car: Laya.Sprite = prefab.create() as Laya.Sprite;
+        Laya.stage.addChild(car);
+        car.pos(x, y);
     }
 
     //组件被启用后执行，例如节点被添加到舞台后
