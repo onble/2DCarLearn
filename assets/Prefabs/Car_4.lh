@@ -1,0 +1,67 @@
+{
+  "_$ver": 1,
+  "_$id": "dyrtm0uv",
+  "_$type": "Box",
+  "name": "Box",
+  "width": 120,
+  "height": 236,
+  "_$comp": [
+    {
+      "_$type": "RigidBody",
+      "type": "kinematic",
+      "allowSleep": false
+    },
+    {
+      "_$type": "PolygonCollider",
+      "x": 60,
+      "y": 13,
+      "isSensor": true,
+      "label": "Car",
+      "datas": [
+        0,
+        0,
+        -46,
+        35,
+        -39,
+        152,
+        -43,
+        192,
+        0,
+        212,
+        40,
+        192,
+        40,
+        151,
+        47,
+        35
+      ]
+    },
+    {
+      "_$type": "5a0e7e81-e13d-42d9-a731-b57336953b45",
+      "scriptPath": "../src/MainScene/Car.ts",
+      "speed": 15
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "elvnb0cg",
+      "_$type": "Image",
+      "name": "Image",
+      "width": 120,
+      "height": 236,
+      "skin": "res://513f71a0-edcd-4401-8c01-a8dbb3617697",
+      "useSourceSize": true,
+      "color": "#ffffff",
+      "_$comp": [
+        {
+          "_$type": "Animator2D",
+          "controller": {
+            "_$uuid": "17cb351b-69a2-48c3-8856-715ea79927ed",
+            "_$type": "AnimationController2D"
+          },
+          "controllerLayers": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,14 +1,14 @@
 {
   "_$ver": 1,
-  "_$id": "q5crzyz0",
+  "_$id": "ct3b4n5u",
   "_$type": "Sprite",
-  "name": "Car_1",
-  "x": 196,
-  "y": 83.50000000000045,
-  "width": 136,
-  "height": 248,
+  "name": "Car_3",
+  "x": 767,
+  "y": -358,
+  "width": 116,
+  "height": 240,
   "texture": {
-    "_$uuid": "5fa07541-87ac-4d96-bf2b-5b4ea17c6539",
+    "_$uuid": "994a2a13-fd63-4a6d-8e53-fabd6a60e90e",
     "_$type": "Texture"
   },
   "_$comp": [
@@ -19,17 +19,15 @@
     },
     {
       "_$type": "RigidBody",
-      "type": "kinematic",
-      "allowSleep": false
+      "type": "kinematic"
     },
     {
       "_$type": "BoxCollider",
-      "x": 29,
-      "y": 20,
+      "x": 20,
+      "y": 19,
       "isSensor": true,
-      "label": "Car",
-      "width": 83,
-      "height": 211
+      "width": 72,
+      "height": 206
     }
   ]
 }

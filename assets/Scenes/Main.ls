@@ -205,34 +205,13 @@
       ]
     },
     {
-      "_$id": "q5crzyz0",
-      "_$type": "Sprite",
-      "name": "Car_1",
-      "x": 196,
-      "y": 83.50000000000045,
-      "width": 136,
-      "height": 248,
-      "texture": {
-        "_$uuid": "5fa07541-87ac-4d96-bf2b-5b4ea17c6539",
-        "_$type": "Texture"
-      },
-      "_$comp": [
-        {
-          "_$type": "5a0e7e81-e13d-42d9-a731-b57336953b45",
-          "scriptPath": "../src/MainScene/Car.ts",
-          "speed": 15
-        },
-        {
-          "_$type": "RigidBody"
-        },
-        {
-          "_$type": "BoxCollider",
-          "x": 29,
-          "y": 20,
-          "width": 83,
-          "height": 211
-        }
-      ]
+      "_$id": "k93yn92f",
+      "_$prefab": "c94ed1b3-5a46-4ebe-89af-5034b4e668da",
+      "name": "Car_6",
+      "active": true,
+      "x": 650,
+      "y": 15,
+      "visible": true
     }
   ]
 }
