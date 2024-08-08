@@ -7,6 +7,36 @@
   "top": 0,
   "bottom": 0,
   "name": "Scene2D",
+  "_$comp": [
+    {
+      "_$type": "d8021029-da07-48e5-b635-37b9b0370c60",
+      "scriptPath": "../src/MainScene/GameManager.ts",
+      "Car_1": {
+        "_$uuid": "c2db703e-13af-436d-a07e-18a0e39f7f83",
+        "_$type": "Prefab"
+      },
+      "Car_2": {
+        "_$uuid": "9b52986b-a6ea-481c-92ce-4dd3336eeb02",
+        "_$type": "Prefab"
+      },
+      "Car_3": {
+        "_$uuid": "8b7b36ab-88f8-42b0-83ea-8bbfd3e53363",
+        "_$type": "Prefab"
+      },
+      "Car_4": {
+        "_$uuid": "c0df7e7c-48cb-493f-9669-8d258561d106",
+        "_$type": "Prefab"
+      },
+      "Car_5": {
+        "_$uuid": "418994d9-4161-431a-80c9-2440bdddb061",
+        "_$type": "Prefab"
+      },
+      "Car_6": {
+        "_$uuid": "c94ed1b3-5a46-4ebe-89af-5034b4e668da",
+        "_$type": "Prefab"
+      }
+    }
+  ],
   "_$child": [
     {
       "_$id": "j3fmgupx",
@@ -203,15 +233,6 @@
           "labelVAlign": "middle"
         }
       ]
-    },
-    {
-      "_$id": "k93yn92f",
-      "_$prefab": "c94ed1b3-5a46-4ebe-89af-5034b4e668da",
-      "name": "Car_6",
-      "active": true,
-      "x": 650,
-      "y": 15,
-      "visible": true
     }
   ]
 }

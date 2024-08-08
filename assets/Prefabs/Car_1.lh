@@ -3,8 +3,6 @@
   "_$id": "q5crzyz0",
   "_$type": "Sprite",
   "name": "Car_1",
-  "x": 196,
-  "y": 83.50000000000045,
   "width": 136,
   "height": 248,
   "texture": {
