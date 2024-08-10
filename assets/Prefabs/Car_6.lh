@@ -20,6 +20,7 @@
       "x": 21,
       "y": 25,
       "isSensor": true,
+      "label": "Car_6",
       "width": 75,
       "height": 193
     },

@@ -233,6 +233,28 @@
           "labelVAlign": "middle"
         }
       ]
+    },
+    {
+      "_$id": "rf19a3we",
+      "_$type": "Sprite",
+      "name": "BottomCollider",
+      "y": 1530,
+      "width": 1080,
+      "height": 39,
+      "_$comp": [
+        {
+          "_$type": "RigidBody",
+          "type": "kinematic",
+          "allowSleep": false
+        },
+        {
+          "_$type": "BoxCollider",
+          "isSensor": true,
+          "label": "BottomCollider",
+          "width": 1080,
+          "height": 39
+        }
+      ]
     }
   ]
 }

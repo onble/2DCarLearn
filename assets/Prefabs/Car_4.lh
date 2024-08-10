@@ -2,7 +2,7 @@
   "_$ver": 1,
   "_$id": "dyrtm0uv",
   "_$type": "Box",
-  "name": "Box",
+  "name": "Car_4",
   "width": 120,
   "height": 236,
   "_$comp": [
@@ -16,7 +16,7 @@
       "x": 60,
       "y": 13,
       "isSensor": true,
-      "label": "Car",
+      "label": "Car_4",
       "datas": [
         0,
         0,
@@ -59,7 +59,25 @@
             "_$uuid": "17cb351b-69a2-48c3-8856-715ea79927ed",
             "_$type": "AnimationController2D"
           },
-          "controllerLayers": []
+          "controllerLayers": [
+            {
+              "_$type": "AnimatorControllerLayer2D",
+              "name": "Base Layer",
+              "states": [
+                {
+                  "_$type": "AnimatorState2D",
+                  "name": "Car_4",
+                  "clipStart": 0,
+                  "clip": {
+                    "_$uuid": "0cfa6f1b-5d40-4561-90a0-4ee1f019f064",
+                    "_$type": "AnimationClip2D"
+                  },
+                  "soloTransitions": []
+                }
+              ],
+              "defaultStateName": "Car_4"
+            }
+          ]
         }
       ]
     }

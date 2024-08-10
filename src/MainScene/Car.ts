@@ -4,6 +4,8 @@ const { regClass, property } = Laya;
 export class Car extends Laya.Script {
     declare owner: Laya.Sprite;
 
+    private sign: string;
+
     @property(Number)
     public speed: number = 15;
 
@@ -22,9 +24,23 @@ export class Car extends Laya.Script {
     //手动调用节点销毁时执行
     //onDestroy(): void {}
 
+    Init(sign: string) {
+        this.sign = sign;
+    }
+
     //每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
     onUpdate(): void {
         this.owner.y += this.speed;
+    }
+    onTriggerExit(
+        other: Laya.ColliderBase,
+        self?: Laya.ColliderBase,
+        contact?: any
+    ): void {
+        if (other.label == "BottomCollider") {
+            this.owner.removeSelf();
+            Laya.Pool.recover(this.sign, this.owner);
+        }
     }
 
     //每帧更新时执行，在update之后执行，尽量不要在这里写大循环逻辑或者使用getComponent方法

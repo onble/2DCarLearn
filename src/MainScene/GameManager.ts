@@ -1,3 +1,5 @@
+import { Car } from "./Car";
+
 const { regClass, property } = Laya;
 
 @regClass()
@@ -62,15 +64,20 @@ export class GameManager extends Laya.Script {
         const x = arrX[this.getRandom(0, arrX.length - 1)];
 
         const carIndex = this.getRandom(0, this.carPrefabArr.length - 1);
+        // 注意，如果对象池传入的名字以数字开头，会报错崩溃
+        const sign: string = `Car${carIndex}`;
 
         const carPrefab = this.carPrefabArr[carIndex];
         const car = Laya.Pool.getItemByCreateFun(
-            carIndex.toString(),
+            sign,
             carPrefab.create,
             carPrefab
-        ) as Laya.Sprite;
-        Laya.stage.addChild(car);
+        ) as Laya.Sprite | Laya.Box;
+        // const car = carPrefab.create() as Laya.Sprite | Laya.Box;
+        // 将标识符传递给Car的管理脚本
         car.pos(x, y);
+        Laya.stage.addChild(car);
+        car.getComponent(Car).Init(sign);
     }
 
     //组件被启用后执行，例如节点被添加到舞台后
