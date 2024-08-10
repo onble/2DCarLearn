@@ -19,11 +19,35 @@ export class GameManager extends Laya.Script {
 
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
-        let ranTime = this.getRandom(300, 800);
-        Laya.timer.loop(ranTime, this, () => {
-            this.spawn();
-            ranTime = this.getRandom(300, 800);
-        });
+        // let ranTime = this.getRandom(300, 800);
+        // Laya.timer.loop(ranTime, this, () => {
+        //     this.spawn();
+        //     ranTime = this.getRandom(300, 800);
+        // });
+        this.loadCarPrefab();
+    }
+    loadCarPrefab() {
+        const carPrefabArr: Laya.PrefabImpl[] = [];
+        const pathArr = [
+            "Prefabs/Car_1.lh",
+            "Prefabs/Car_2.lh",
+            "Prefabs/Car_3.lh",
+            "Prefabs/Car_4.lh",
+            "Prefabs/Car_5.lh",
+            "Prefabs/Car_6.lh",
+        ];
+        const infoArr = [];
+        for (let i = 0; i < pathArr.length; i++) {
+            infoArr.push({ url: pathArr[i], type: Laya.Loader.BUFFER });
+        }
+        Laya.loader.load(
+            infoArr,
+            Laya.Handler.create(this, function (result: Laya.Resource) {
+                for (let i = 0; i < pathArr.length; i++) {
+                    carPrefabArr.push(Laya.loader.getRes(pathArr[i]));
+                }
+            })
+        );
     }
     spawn() {
         // x 190 380 570 760
