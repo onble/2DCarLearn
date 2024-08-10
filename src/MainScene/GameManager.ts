@@ -4,6 +4,21 @@ const { regClass, property } = Laya;
 
 @regClass()
 export class GameManager extends Laya.Script {
+    @property(Laya.Prefab)
+    public Car_1: Laya.Prefab;
+    @property(Laya.Prefab)
+    public Car_2: Laya.Prefab;
+    @property(Laya.Prefab)
+    public Car_3: Laya.Prefab;
+    @property(Laya.Prefab)
+    public Car_4: Laya.Prefab;
+    @property(Laya.Prefab)
+    public Car_5: Laya.Prefab;
+    @property(Laya.Prefab)
+    public Car_6: Laya.Prefab;
+    @property(Laya.Prefab)
+    public Coin: Laya.Prefab;
+
     declare owner: Laya.Sprite;
 
     /** 存储创建的汽车预制体 */
@@ -20,14 +35,14 @@ export class GameManager extends Laya.Script {
         });
     }
     loadCarPrefab() {
-        const pathArr = [
+        let pathArr = [
             "Prefabs/Car_1.lh",
             "Prefabs/Car_2.lh",
             "Prefabs/Car_3.lh",
             "Prefabs/Car_4.lh",
             "Prefabs/Car_5.lh",
             "Prefabs/Car_6.lh",
-            // "Prefabs/Coin.lh",
+            "Prefabs/Coin.lh",
         ];
         const infoArr = [];
         for (let i = 0; i < pathArr.length; i++) {

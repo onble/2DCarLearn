@@ -35,6 +35,10 @@
       "Car_6": {
         "_$uuid": "c94ed1b3-5a46-4ebe-89af-5034b4e668da",
         "_$type": "Prefab"
+      },
+      "Coin": {
+        "_$uuid": "c4eb3702-3f11-4103-8fdc-f2d1fcf536a7",
+        "_$type": "Prefab"
       }
     }
   ],
