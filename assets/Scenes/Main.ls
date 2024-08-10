@@ -270,6 +270,12 @@
       "width": 1073,
       "height": 1119,
       "_mouseState": 2,
+      "_$comp": [
+        {
+          "_$type": "a5b4391e-8689-4079-b1e7-1d2b41069af3",
+          "scriptPath": "../src/MainScene/GamePanel.ts"
+        }
+      ],
       "_$child": [
         {
           "_$id": "vprtoirb",
@@ -296,7 +302,6 @@
           "width": 552,
           "height": 204,
           "text": "Best:100",
-          "font": "res://159a64f5-0ad2-49a5-aab6-8c2bc7d034d8",
           "fontSize": 100,
           "color": "rgba(76, 97, 239, 1)",
           "align": "right",
@@ -314,7 +319,6 @@
           "width": 552,
           "height": 204,
           "text": "Last:50",
-          "font": "res://159a64f5-0ad2-49a5-aab6-8c2bc7d034d8",
           "fontSize": 100,
           "color": "rgba(220, 52, 52, 1)",
           "align": "right",
@@ -333,7 +337,6 @@
           "width": 781,
           "height": 343,
           "text": "0",
-          "font": "res://159a64f5-0ad2-49a5-aab6-8c2bc7d034d8",
           "fontSize": 200,
           "color": "rgba(37, 199, 64, 1)",
           "align": "center",
