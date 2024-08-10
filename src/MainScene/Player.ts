@@ -1,3 +1,5 @@
+import { Car } from "./Car";
+
 const { regClass, property } = Laya;
 
 @regClass()
@@ -70,6 +72,23 @@ export class Player extends Laya.Script {
             this.owner.x = this._playerMaxX;
         } else if (this.owner.x < this._playerMinx) {
             this.owner.x = this._playerMinx;
+        }
+    }
+    onTriggerEnter(
+        other: Laya.ColliderBase,
+        self?: Laya.ColliderBase,
+        contact?: any
+    ): void {
+        if (other.label.match(/^Car/)) {
+            // 游戏结束
+            Laya.stage.event("GameOver");
+        }
+        if (other.label == "Coin") {
+            // 移除金币
+            other.owner.removeSelf();
+            // 通知脚本进行回收对象
+            other.owner.getComponent(Car).recover();
+            // 加分TODO
         }
     }
 

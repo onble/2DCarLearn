@@ -39,7 +39,7 @@ export class Car extends Laya.Script {
     ): void {
         if (other.label == "BottomCollider") {
             this.owner.removeSelf();
-            Laya.Pool.recover(this.sign, this.owner);
+            this.recover();
         }
     }
 
@@ -48,4 +48,10 @@ export class Car extends Laya.Script {
 
     //鼠标点击后执行。与交互相关的还有onMouseDown等十多个函数，具体请参阅文档。
     //onMouseClick(): void {}
+    /**
+     * 回收对象
+     */
+    recover() {
+        Laya.Pool.recover(this.sign, this.owner);
+    }
 }

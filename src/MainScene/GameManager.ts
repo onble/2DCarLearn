@@ -23,6 +23,7 @@ export class GameManager extends Laya.Script {
 
     /** 存储创建的汽车预制体 */
     private carPrefabArr: Laya.PrefabImpl[] = [];
+    private spawnCarArr: (Laya.Sprite | Laya.Box)[] = [];
     /** 存储是否开始了游戏状态 */
     private isStartGame = false;
 
@@ -33,6 +34,8 @@ export class GameManager extends Laya.Script {
         Laya.stage.on("StartGame", this, () => {
             this.isStartGame = true;
         });
+        // 监听游戏结束事件
+        Laya.stage.on("GameOver", this, this.gameOver);
     }
     loadCarPrefab() {
         let pathArr = [
@@ -41,8 +44,8 @@ export class GameManager extends Laya.Script {
             "Prefabs/Car_3.lh",
             "Prefabs/Car_4.lh",
             "Prefabs/Car_5.lh",
-            "Prefabs/Car_6.lh",
             "Prefabs/Coin.lh",
+            "Prefabs/Car_6.lh",
         ];
         const infoArr = [];
         for (let i = 0; i < pathArr.length; i++) {
@@ -54,9 +57,6 @@ export class GameManager extends Laya.Script {
                 for (let i = 0; i < pathArr.length; i++) {
                     this.carPrefabArr.push(Laya.loader.getRes(pathArr[i]));
                 }
-
-                console.log("this.carPrefabArr", this.carPrefabArr);
-
                 let ranTime = this.getRandom(800, 1200);
                 Laya.timer.loop(ranTime, this, () => {
                     this.spawn();
@@ -91,6 +91,8 @@ export class GameManager extends Laya.Script {
         car.pos(x, y);
         this.owner.addChild(car);
         car.getComponent(Car).Init(sign);
+        // 将car对象存储，最后清屏的时候拿到清除
+        this.spawnCarArr.push(car);
     }
 
     //组件被启用后执行，例如节点被添加到舞台后
@@ -123,5 +125,15 @@ export class GameManager extends Laya.Script {
         let value = Math.random() * (max - min);
         value = Math.round(value);
         return min + value;
+    }
+    /**
+     * 游戏结束
+     */
+    gameOver() {
+        // 更改开始游戏状态变量
+        this.isStartGame = false;
+        this.spawnCarArr.forEach((element) => {
+            element.removeSelf();
+        });
     }
 }

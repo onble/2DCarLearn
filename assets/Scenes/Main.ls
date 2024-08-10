@@ -95,17 +95,15 @@
       "_$comp": [
         {
           "_$type": "BoxCollider",
-          "x": 12,
-          "y": 17,
+          "x": 27,
+          "y": 38,
           "label": "player",
-          "width": 94,
-          "height": 211
+          "width": 63,
+          "height": 168
         },
         {
           "_$type": "RigidBody",
-          "type": "kinematic",
-          "category": 32,
-          "mask": 6
+          "type": "kinematic"
         },
         {
           "_$type": "0803f7b9-4ed0-4adf-bb7b-83cb5b64ba9a",

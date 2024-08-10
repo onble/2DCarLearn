@@ -21,6 +21,7 @@
       "x": 42,
       "y": 41,
       "isSensor": true,
+      "label": "Coin",
       "radius": 41
     }
   ],
@@ -45,7 +46,25 @@
             "_$uuid": "740b1d91-693a-4f99-84e6-5d708ccfbf61",
             "_$type": "AnimationController2D"
           },
-          "controllerLayers": []
+          "controllerLayers": [
+            {
+              "_$type": "AnimatorControllerLayer2D",
+              "name": "Base Layer",
+              "states": [
+                {
+                  "_$type": "AnimatorState2D",
+                  "name": "Coin",
+                  "clipStart": 0,
+                  "clip": {
+                    "_$uuid": "8700531e-6b63-4a1a-a698-72bd0f32cf06",
+                    "_$type": "AnimationClip2D"
+                  },
+                  "soloTransitions": []
+                }
+              ],
+              "defaultStateName": "Coin"
+            }
+          ]
         }
       ]
     }
