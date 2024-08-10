@@ -259,6 +259,91 @@
           "height": 39
         }
       ]
+    },
+    {
+      "_$id": "o9hnlkle",
+      "_$var": true,
+      "_$type": "Sprite",
+      "name": "GamePanel",
+      "x": 2,
+      "y": 1,
+      "width": 1073,
+      "height": 1119,
+      "_mouseState": 2,
+      "_$child": [
+        {
+          "_$id": "vprtoirb",
+          "_$type": "Button",
+          "name": "btn_Pause",
+          "x": 34.999999999999986,
+          "y": 57.99999999999999,
+          "width": 120,
+          "height": 120,
+          "_mouseState": 2,
+          "stateNum": 1,
+          "skin": "res://26a08211-7676-4cbb-89ff-63ab41eb8033",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "center",
+          "labelVAlign": "middle"
+        },
+        {
+          "_$id": "xixchnsz",
+          "_$type": "Text",
+          "name": "txt_Best",
+          "x": 495.0000000000001,
+          "y": 31.999999999999943,
+          "width": 552,
+          "height": 204,
+          "text": "Best:100",
+          "font": "res://159a64f5-0ad2-49a5-aab6-8c2bc7d034d8",
+          "fontSize": 100,
+          "color": "rgba(76, 97, 239, 1)",
+          "align": "right",
+          "valign": "middle",
+          "leading": 2,
+          "stroke": 5,
+          "strokeColor": "rgba(17, 19, 89, 1)"
+        },
+        {
+          "_$id": "r222vhqp",
+          "_$type": "Text",
+          "name": "txt_Last",
+          "x": 493,
+          "y": 158.99999999999991,
+          "width": 552,
+          "height": 204,
+          "text": "Last:50",
+          "font": "res://159a64f5-0ad2-49a5-aab6-8c2bc7d034d8",
+          "fontSize": 100,
+          "color": "rgba(220, 52, 52, 1)",
+          "align": "right",
+          "valign": "middle",
+          "leading": 2,
+          "underlineColor": "rgba(255, 255, 255, 1)",
+          "stroke": 5,
+          "strokeColor": "rgba(84, 23, 23, 1)"
+        },
+        {
+          "_$id": "zts47b3s",
+          "_$type": "Text",
+          "name": "txt_Score",
+          "x": 149.99999999999997,
+          "y": 296.00000000000006,
+          "width": 781,
+          "height": 343,
+          "text": "0",
+          "font": "res://159a64f5-0ad2-49a5-aab6-8c2bc7d034d8",
+          "fontSize": 200,
+          "color": "rgba(37, 199, 64, 1)",
+          "align": "center",
+          "valign": "middle",
+          "leading": 2,
+          "underlineColor": "rgba(255, 255, 255, 1)",
+          "stroke": 5,
+          "strokeColor": "rgba(21, 6, 6, 1)"
+        }
+      ]
     }
   ]
 }

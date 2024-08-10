@@ -6,5 +6,6 @@
  */
 export class MainSceneBase extends Laya.Scene {
     public StartPanel!: Laya.Sprite;
+    public GamePanel!: Laya.Sprite;
 }
 
