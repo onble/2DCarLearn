@@ -1,6 +1,7 @@
 {
   "_$ver": 1,
   "_$id": "lx8mwule",
+  "_$runtime": "res://285eb4bf-4e95-475b-b789-86420cbbf0a9",
   "_$type": "Scene",
   "left": 0,
   "right": 0,
@@ -110,6 +111,7 @@
     },
     {
       "_$id": "pw48g50j",
+      "_$var": true,
       "_$type": "Sprite",
       "name": "StartPanel",
       "width": 1080,
@@ -238,7 +240,7 @@
       "_$id": "rf19a3we",
       "_$type": "Sprite",
       "name": "BottomCollider",
-      "y": 1530,
+      "y": 2000,
       "width": 1080,
       "height": 39,
       "_$comp": [

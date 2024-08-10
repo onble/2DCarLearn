@@ -6,24 +6,18 @@ const { regClass, property } = Laya;
 export class GameManager extends Laya.Script {
     declare owner: Laya.Sprite;
 
-    @property(Laya.Prefab)
-    public Car_1: Laya.Prefab;
-    @property(Laya.Prefab)
-    public Car_2: Laya.Prefab;
-    @property(Laya.Prefab)
-    public Car_3: Laya.Prefab;
-    @property(Laya.Prefab)
-    public Car_4: Laya.Prefab;
-    @property(Laya.Prefab)
-    public Car_5: Laya.Prefab;
-    @property(Laya.Prefab)
-    public Car_6: Laya.Prefab;
-
+    /** 存储创建的汽车预制体 */
     private carPrefabArr: Laya.PrefabImpl[] = [];
+    /** 存储是否开始了游戏状态 */
+    private isStartGame = false;
 
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
         this.loadCarPrefab();
+        // 监听到开始游戏事件后就将状态更改开始游戏的状态
+        Laya.stage.on("StartGame", this, () => {
+            this.isStartGame = true;
+        });
     }
     loadCarPrefab() {
         const pathArr = [
@@ -45,10 +39,10 @@ export class GameManager extends Laya.Script {
                     this.carPrefabArr.push(Laya.loader.getRes(pathArr[i]));
                 }
 
-                let ranTime = this.getRandom(300, 800);
+                let ranTime = this.getRandom(800, 1200);
                 Laya.timer.loop(ranTime, this, () => {
                     this.spawn();
-                    ranTime = this.getRandom(300, 800);
+                    ranTime = this.getRandom(800, 1200);
                 });
             })
         );
@@ -57,6 +51,7 @@ export class GameManager extends Laya.Script {
      * 生成小汽车
      */
     spawn() {
+        if (!this.isStartGame) return;
         // x 190 380 570 760
         // 下面去随机生成的位置
         const arrX = [190, 380, 570, 760];
@@ -76,7 +71,7 @@ export class GameManager extends Laya.Script {
         // const car = carPrefab.create() as Laya.Sprite | Laya.Box;
         // 将标识符传递给Car的管理脚本
         car.pos(x, y);
-        Laya.stage.addChild(car);
+        this.owner.addChild(car);
         car.getComponent(Car).Init(sign);
     }
 

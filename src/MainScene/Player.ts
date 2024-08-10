@@ -20,7 +20,7 @@ export class Player extends Laya.Script {
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
         Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.MouseDown);
-        Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.MouseUp);
+        Laya.stage.on(Laya.Event.MOUSE_UP, this, this.MouseUp);
         // 事件监听
         Laya.stage.on("StartGame", this, () => {
             this.isStartGame = true;
