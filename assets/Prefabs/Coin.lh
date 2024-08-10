@@ -1,0 +1,53 @@
+{
+  "_$ver": 1,
+  "_$id": "asw3xf96",
+  "_$type": "Box",
+  "name": "Coin",
+  "width": 84,
+  "height": 84,
+  "_$comp": [
+    {
+      "_$type": "5a0e7e81-e13d-42d9-a731-b57336953b45",
+      "scriptPath": "../src/MainScene/Car.ts",
+      "speed": 15
+    },
+    {
+      "_$type": "RigidBody",
+      "type": "kinematic",
+      "allowSleep": false
+    },
+    {
+      "_$type": "CircleCollider",
+      "x": 42,
+      "y": 41,
+      "isSensor": true,
+      "radius": 41
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "v4rklofp",
+      "_$type": "Image",
+      "name": "Image",
+      "x": 42,
+      "y": 42,
+      "width": 84,
+      "height": 84,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "skin": "res://fa241d44-ed65-4444-a5b3-458d8b48bec6",
+      "useSourceSize": true,
+      "color": "#ffffff",
+      "_$comp": [
+        {
+          "_$type": "Animator2D",
+          "controller": {
+            "_$uuid": "740b1d91-693a-4f99-84e6-5d708ccfbf61",
+            "_$type": "AnimationController2D"
+          },
+          "controllerLayers": []
+        }
+      ]
+    }
+  ]
+}

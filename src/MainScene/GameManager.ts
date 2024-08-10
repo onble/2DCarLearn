@@ -27,6 +27,7 @@ export class GameManager extends Laya.Script {
             "Prefabs/Car_4.lh",
             "Prefabs/Car_5.lh",
             "Prefabs/Car_6.lh",
+            // "Prefabs/Coin.lh",
         ];
         const infoArr = [];
         for (let i = 0; i < pathArr.length; i++) {
@@ -38,6 +39,8 @@ export class GameManager extends Laya.Script {
                 for (let i = 0; i < pathArr.length; i++) {
                     this.carPrefabArr.push(Laya.loader.getRes(pathArr[i]));
                 }
+
+                console.log("this.carPrefabArr", this.carPrefabArr);
 
                 let ranTime = this.getRandom(800, 1200);
                 Laya.timer.loop(ranTime, this, () => {
