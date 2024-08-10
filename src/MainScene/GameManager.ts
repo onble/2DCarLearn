@@ -17,17 +17,13 @@ export class GameManager extends Laya.Script {
     @property(Laya.Prefab)
     public Car_6: Laya.Prefab;
 
+    private carPrefabArr: Laya.PrefabImpl[] = [];
+
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
-        // let ranTime = this.getRandom(300, 800);
-        // Laya.timer.loop(ranTime, this, () => {
-        //     this.spawn();
-        //     ranTime = this.getRandom(300, 800);
-        // });
         this.loadCarPrefab();
     }
     loadCarPrefab() {
-        const carPrefabArr: Laya.PrefabImpl[] = [];
         const pathArr = [
             "Prefabs/Car_1.lh",
             "Prefabs/Car_2.lh",
@@ -42,13 +38,22 @@ export class GameManager extends Laya.Script {
         }
         Laya.loader.load(
             infoArr,
-            Laya.Handler.create(this, function (result: Laya.Resource) {
+            Laya.Handler.create(this, (result: Laya.Resource) => {
                 for (let i = 0; i < pathArr.length; i++) {
-                    carPrefabArr.push(Laya.loader.getRes(pathArr[i]));
+                    this.carPrefabArr.push(Laya.loader.getRes(pathArr[i]));
                 }
+
+                let ranTime = this.getRandom(300, 800);
+                Laya.timer.loop(ranTime, this, () => {
+                    this.spawn();
+                    ranTime = this.getRandom(300, 800);
+                });
             })
         );
     }
+    /**
+     * 生成小汽车
+     */
     spawn() {
         // x 190 380 570 760
         // 下面去随机生成的位置
@@ -56,32 +61,14 @@ export class GameManager extends Laya.Script {
         const y = -300;
         const x = arrX[this.getRandom(0, arrX.length - 1)];
 
-        // 下面去随机类型
-        const typeArr = [1, 2, 3, 4, 5, 6];
-        const typeIndex = this.getRandom(0, typeArr.length - 1);
-        switch (typeArr[typeIndex]) {
-            case 1:
-                this.create(this.Car_1, x, y);
-                break;
-            case 2:
-                this.create(this.Car_2, x, y);
-                break;
-            case 3:
-                this.create(this.Car_3, x, y);
-                break;
-            case 4:
-                this.create(this.Car_4, x, y);
-                break;
-            case 5:
-                this.create(this.Car_5, x, y);
-                break;
-            case 6:
-                this.create(this.Car_6, x, y);
-                break;
-        }
-    }
-    create(prefab: Laya.Prefab, x: number, y: number) {
-        let car: Laya.Sprite = prefab.create() as Laya.Sprite;
+        const carIndex = this.getRandom(0, this.carPrefabArr.length - 1);
+
+        const carPrefab = this.carPrefabArr[carIndex];
+        const car = Laya.Pool.getItemByCreateFun(
+            carIndex.toString(),
+            carPrefab.create,
+            carPrefab
+        ) as Laya.Sprite;
         Laya.stage.addChild(car);
         car.pos(x, y);
     }
