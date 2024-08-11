@@ -347,6 +347,131 @@
           "strokeColor": "rgba(21, 6, 6, 1)"
         }
       ]
+    },
+    {
+      "_$id": "0bhbfk7v",
+      "_$var": true,
+      "_$type": "Sprite",
+      "name": "PausePanel",
+      "width": 1080,
+      "height": 1920,
+      "visible": false,
+      "_mouseState": 2,
+      "_$comp": [
+        {
+          "_$type": "1adc1bb4-58ac-4cee-93c0-99ca6824e6c4",
+          "scriptPath": "../src/MainScene/PausePanel.ts"
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "tytttr2m",
+          "_$type": "Image",
+          "name": "Image",
+          "width": 1080,
+          "height": 1920,
+          "skin": "res://cfc700b3-efc9-432b-8cb7-3b088c43088e",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "ndi3v3jd",
+          "_$type": "Button",
+          "name": "btn_Close",
+          "x": 35,
+          "y": 58,
+          "width": 120,
+          "height": 120,
+          "_mouseState": 2,
+          "stateNum": 1,
+          "skin": "res://cf2692e0-bbfb-4cfd-826a-f70b394c2c5b",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "center",
+          "labelVAlign": "middle"
+        },
+        {
+          "_$id": "oelfcsib",
+          "_$type": "Button",
+          "name": "btn_Home",
+          "x": 290,
+          "y": 988,
+          "width": 120,
+          "height": 120,
+          "_mouseState": 2,
+          "stateNum": 1,
+          "skin": "res://0cdd8121-e5ab-460c-a729-66f4cf340767",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "center",
+          "labelVAlign": "middle"
+        },
+        {
+          "_$id": "pi6e9s06",
+          "_$type": "Button",
+          "name": "btn_Restart",
+          "x": 500,
+          "y": 988,
+          "width": 120,
+          "height": 120,
+          "_mouseState": 2,
+          "stateNum": 1,
+          "skin": "res://536e9868-a530-4117-96f5-751b7d46e035",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "center",
+          "labelVAlign": "middle"
+        },
+        {
+          "_$id": "m0zt0x9e",
+          "_$type": "Button",
+          "name": "btn_AudioOn",
+          "x": 710,
+          "y": 988,
+          "width": 120,
+          "height": 120,
+          "_mouseState": 2,
+          "stateNum": 1,
+          "skin": "res://40d75362-9766-40a3-86be-280ca60d557e",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "center",
+          "labelVAlign": "middle"
+        },
+        {
+          "_$id": "gaxqtpz6",
+          "_$type": "Button",
+          "name": "btn_AudioOff",
+          "x": 710,
+          "y": 988,
+          "width": 120,
+          "height": 120,
+          "_mouseState": 2,
+          "stateNum": 1,
+          "skin": "res://d6332834-869e-4793-a5e0-e3d12bfe2fb7",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "center",
+          "labelVAlign": "middle"
+        },
+        {
+          "_$id": "k8k0ybym",
+          "_$type": "Text",
+          "name": "txt_Pause",
+          "x": 150,
+          "y": 739,
+          "width": 781,
+          "height": 188,
+          "text": "Pause",
+          "fontSize": 150,
+          "color": "rgba(249, 52, 75, 1)",
+          "align": "center",
+          "valign": "middle",
+          "leading": 2,
+          "underlineColor": "rgba(255, 255, 255, 1)",
+          "stroke": 5,
+          "strokeColor": "rgba(21, 6, 6, 1)"
+        }
+      ]
     }
   ]
 }

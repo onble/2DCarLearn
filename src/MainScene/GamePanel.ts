@@ -22,7 +22,6 @@ export class GamePanel extends Laya.Script {
         Laya.loader.load(
             "resources/font.ttf",
             Laya.Handler.create(this, (font: FontFace) => {
-                console.log(font);
                 this.txt_Best.font = font.family;
                 this.txt_Last.font = font.family;
                 this.txt_Score.font = font.family;
@@ -58,6 +57,8 @@ export class GamePanel extends Laya.Script {
     }
     pauseBtnClick() {
         Laya.timer.pause();
+        // 将游戏视图隐藏
+        this.owner.visible = false;
         // 进行广播通知
         Laya.stage.event("Pause");
     }

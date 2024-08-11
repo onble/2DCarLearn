@@ -6,5 +6,6 @@ export class MainScene extends MainSceneBase {
     onAwake(): void {
         this.StartPanel.zOrder = 100;
         this.GamePanel.zOrder = 10;
+        this.PausePanel.zOrder = 10;
     }
 }
