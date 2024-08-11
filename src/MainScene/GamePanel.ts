@@ -35,11 +35,14 @@ export class GamePanel extends Laya.Script {
         // 监听到开始游戏的事件就显示
         Laya.stage.on("StartGame", this, () => {
             this.owner.visible = true;
+            // TODO:放这里会有逻辑错误
+            this.Init();
         });
         // 每生存一段时间，就增加分数
         Laya.timer.loop(300, this, this.AddScore);
         Laya.stage.on("AddScore", this, this.AddScore);
-
+    }
+    Init() {
         // 去本地存储中获得数据,如果没有数据，则返回null
         this.txt_Last.text = `Last:${
             Laya.LocalStorage.getItem("LastScore") || "0"
@@ -47,6 +50,8 @@ export class GamePanel extends Laya.Script {
         this.txt_Best.text = `Best:${
             Laya.LocalStorage.getItem("BestScore") || "0"
         }`;
+        this.txt_Score.text = `0`;
+        this.score = 0;
     }
 
     AddScore(score = 1) {

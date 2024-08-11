@@ -1,3 +1,6 @@
+import { GameManager } from "./GameManager";
+import { StartPanel } from "./StartPanel";
+
 const { regClass, property } = Laya;
 
 @regClass()
@@ -19,9 +22,17 @@ export class PausePanel extends Laya.Script {
             Laya.Loader.TTF
         );
 
-        this.owner
-            .getChildByName("btn_Home")
-            .on(Laya.Event.CLICK, this, () => {});
+        this.owner.getChildByName("btn_Home").on(Laya.Event.CLICK, this, () => {
+            Laya.timer.resume();
+            this.owner.visible = false;
+            // 通知主页面板
+            this.owner.parent
+                .getChildByName("StartPanel")
+                .getComponent(StartPanel)
+                .HomeButtonClick();
+            // 通知游戏管理器
+            this.owner.parent.getComponent(GameManager).HomeButtonClick();
+        });
         this.owner
             .getChildByName("btn_Close")
             .on(Laya.Event.CLICK, this, () => {
@@ -29,6 +40,8 @@ export class PausePanel extends Laya.Script {
                 Laya.timer.resume();
                 // 将暂停视图隐藏
                 this.owner.visible = false;
+                // 广播开始游戏
+                Laya.stage.event("StartGame");
             });
         this.owner
             .getChildByName("btn_Restart")

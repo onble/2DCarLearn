@@ -136,4 +136,10 @@ export class GameManager extends Laya.Script {
             element.removeSelf();
         });
     }
+    /**
+     * 当Home按钮点击的时候调用
+     */
+    HomeButtonClick() {
+        this.gameOver();
+    }
 }

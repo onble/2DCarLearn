@@ -31,6 +31,10 @@ export class StartPanel extends Laya.Script {
         this.btn_AudioOn.visible = true;
     }
 
+    public HomeButtonClick() {
+        this.owner.visible = true;
+    }
+
     //组件被启用后执行，例如节点被添加到舞台后
     //onEnable(): void {}
 
