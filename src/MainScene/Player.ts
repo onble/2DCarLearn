@@ -33,6 +33,9 @@ export class Player extends Laya.Script {
         // 获取自身Rigidbody组件
         this._rig = this.owner.getComponent(Laya.RigidBody);
 
+        this.Reset();
+    }
+    Reset() {
         // 随机小汽车的初始位置
         const index = this.getRandom(0, this.initXArr.length - 1);
         this.owner.pos(this.initXArr[index], 1360);

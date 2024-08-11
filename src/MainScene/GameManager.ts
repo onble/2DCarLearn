@@ -142,4 +142,10 @@ export class GameManager extends Laya.Script {
     HomeButtonClick() {
         this.gameOver();
     }
+
+    RestartButtonClick() {
+        this.spawnCarArr.forEach((element) => {
+            element.removeSelf();
+        });
+    }
 }

@@ -1,4 +1,5 @@
 import { GameManager } from "./GameManager";
+import { Player } from "./Player";
 import { StartPanel } from "./StartPanel";
 
 const { regClass, property } = Laya;
@@ -32,6 +33,11 @@ export class PausePanel extends Laya.Script {
                 .HomeButtonClick();
             // 通知游戏管理器
             this.owner.parent.getComponent(GameManager).HomeButtonClick();
+            // 通知玩家小车进行重置
+            this.owner.parent
+                .getChildByName("player")
+                .getComponent(Player)
+                .Reset();
         });
         this.owner
             .getChildByName("btn_Close")
@@ -45,7 +51,20 @@ export class PausePanel extends Laya.Script {
             });
         this.owner
             .getChildByName("btn_Restart")
-            .on(Laya.Event.CLICK, this, () => {});
+            .on(Laya.Event.CLICK, this, () => {
+                Laya.timer.resume();
+                this.owner.visible = false;
+                // 通知游戏管理器
+                this.owner.parent
+                    .getComponent(GameManager)
+                    .RestartButtonClick();
+                Laya.stage.event("StartGame");
+                // 通知玩家小车进行重置
+                this.owner.parent
+                    .getChildByName("player")
+                    .getComponent(Player)
+                    .Reset();
+            });
         this.owner
             .getChildByName("btn_AudioOn")
             .on(Laya.Event.CLICK, this, () => {});
