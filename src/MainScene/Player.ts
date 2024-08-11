@@ -27,6 +27,9 @@ export class Player extends Laya.Script {
         Laya.stage.on("StartGame", this, () => {
             this.isStartGame = true;
         });
+        Laya.stage.on("Pause", this, () => {
+            this.isStartGame = false;
+        });
         // 获取自身Rigidbody组件
         this._rig = this.owner.getComponent(Laya.RigidBody);
 
@@ -36,6 +39,8 @@ export class Player extends Laya.Script {
     }
     MouseDown() {
         if (this.isStartGame == false) return;
+        // 游戏上方的点击不生效
+        if (Laya.stage.mouseY < 500) return;
         let mouseX = Laya.stage.mouseX;
         /** 转弯的方向 */
         let force = 0;

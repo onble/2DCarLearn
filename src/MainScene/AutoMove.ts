@@ -9,6 +9,8 @@ export class AutoMove extends Laya.Script {
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
         this._height = this.owner.height;
+
+        Laya.timer.frameLoop(1, this, this.frameLoop);
     }
 
     //组件被启用后执行，例如节点被添加到舞台后
@@ -24,7 +26,9 @@ export class AutoMove extends Laya.Script {
     //onDestroy(): void {}
 
     //每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
-    onUpdate(): void {
+    // onUpdate(): void {}
+
+    frameLoop() {
         this.owner.y += this._moveSpeed;
         if (this.owner.y >= this._height) {
             this.owner.y -= this._height * 2;

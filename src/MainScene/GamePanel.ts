@@ -42,7 +42,12 @@ export class GamePanel extends Laya.Script {
         Laya.stage.on("AddScore", this, this.AddScore);
 
         // 去本地存储中获得数据,如果没有数据，则返回null
-        this.txt_Last.text = Laya.LocalStorage.getItem("LastScore") || "0";
+        this.txt_Last.text = `Last:${
+            Laya.LocalStorage.getItem("LastScore") || "0"
+        }`;
+        this.txt_Best.text = `Best:${
+            Laya.LocalStorage.getItem("BestScore") || "0"
+        }`;
     }
 
     AddScore(score = 1) {
@@ -53,6 +58,8 @@ export class GamePanel extends Laya.Script {
     }
     pauseBtnClick() {
         Laya.timer.pause();
+        // 进行广播通知
+        Laya.stage.event("Pause");
     }
 
     //组件被启用后执行，例如节点被添加到舞台后
