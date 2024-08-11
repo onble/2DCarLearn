@@ -88,7 +88,8 @@ export class Player extends Laya.Script {
             other.owner.removeSelf();
             // 通知脚本进行回收对象
             other.owner.getComponent(Car).recover();
-            // 加分TODO
+            // 加分
+            Laya.stage.event("AddScore", 10);
         }
     }
 
