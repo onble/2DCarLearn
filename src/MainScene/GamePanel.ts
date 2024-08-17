@@ -8,7 +8,11 @@ export class GamePanel extends Laya.Script {
     private txt_Last: Laya.Text;
     private txt_Score: Laya.Text;
 
-    private score: number = 0;
+    public score: number = 0;
+    onAdded(): void {
+        // 清空本地信息
+        // Laya.LocalStorage.clear();
+    }
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
         this.txt_Best = this.owner.getChildByName("txt_Best") as Laya.Text;
