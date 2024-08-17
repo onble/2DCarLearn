@@ -1,4 +1,4 @@
-import { Assert } from "../util/assert";
+import { Assert } from "../util/Assert";
 import { GameManager } from "./GameManager";
 import { Player } from "./Player";
 import { StartPanel } from "./StartPanel";

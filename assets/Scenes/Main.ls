@@ -608,6 +608,29 @@
           "underlineColor": "rgba(255, 255, 255, 1)",
           "stroke": 5,
           "strokeColor": "rgba(21, 6, 6, 1)"
+        },
+        {
+          "_$id": "4r2rl4oz",
+          "_$type": "Image",
+          "name": "test",
+          "x": 443,
+          "y": -899,
+          "width": 136,
+          "height": 248,
+          "scaleY": -1,
+          "skin": "res://5fa07541-87ac-4d96-bf2b-5b4ea17c6539",
+          "useSourceSize": true,
+          "color": "#ffffff",
+          "_$comp": [
+            {
+              "_$type": "RigidBody"
+            },
+            {
+              "_$type": "BoxCollider",
+              "width": 117,
+              "height": 229
+            }
+          ]
         }
       ]
     }

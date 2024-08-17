@@ -1,4 +1,4 @@
-import { Assert } from "../util/assert";
+import { Assert } from "../util/Assert";
 import { AutoMove } from "./AutoMove";
 import { Car } from "./Car";
 
@@ -75,7 +75,7 @@ export class GameManager extends Laya.Script {
         // x 190 380 570 760
         // 下面去随机生成的位置
         const arrX = [190, 380, 570, 760];
-        const y = -600;
+        let y = -300;
         const carPosIndex = this.getRandom(0, arrX.length - 1);
         const x = arrX[carPosIndex];
 
@@ -88,7 +88,9 @@ export class GameManager extends Laya.Script {
         // const car = carPrefab.create() as Laya.Sprite | Laya.Box;
         // 获得控制汽车的脚本
         const carScript = car.getComponent(Car) || Assert.ComponentNotNull;
-        car.pos(x, y);
+        // 获得碰撞器
+        // const Collider = car.getComponent(Laya.BoxCollider).offset;
+        car.anchorY = 0.5;
         // 根据位置控制双向车道不同的逻辑
         switch (carPosIndex) {
             // 左边的车辆 让左边的车辆反向
@@ -112,6 +114,7 @@ export class GameManager extends Laya.Script {
             default:
                 throw new Error("出现意外的carPosIndex值");
         }
+        car.pos(x, y);
         this.owner.addChild(car);
         car.getComponent(Car).Init(sign);
         // 将car对象存储，最后清屏的时候拿到清除
