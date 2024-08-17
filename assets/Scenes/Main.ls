@@ -265,10 +265,8 @@
       "_$var": true,
       "_$type": "Sprite",
       "name": "GamePanel",
-      "x": 2,
-      "y": 1,
-      "width": 1073,
-      "height": 1119,
+      "width": 1080,
+      "height": 1920,
       "_mouseState": 2,
       "_$comp": [
         {
@@ -345,6 +343,33 @@
           "underlineColor": "rgba(255, 255, 255, 1)",
           "stroke": 5,
           "strokeColor": "rgba(21, 6, 6, 1)"
+        },
+        {
+          "_$id": "1j9md8rn",
+          "_$type": "Image",
+          "name": "rightArrow",
+          "x": 561,
+          "y": 1734,
+          "width": 519.3036967442573,
+          "height": 185.98318441538513,
+          "alpha": 0.5,
+          "right": 0,
+          "bottom": 0,
+          "skin": "res://859bb221-c008-4470-b3ad-0141e45e28d6",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "fcn1wzm0",
+          "_$type": "Image",
+          "name": "leftArrow",
+          "y": 1734,
+          "width": 519.3036967442573,
+          "height": 185.98318441538513,
+          "alpha": 0.5,
+          "left": 0,
+          "bottom": 0,
+          "skin": "res://58df04cd-f3d8-4dda-9880-a7b1ab4ef2e8",
+          "color": "#ffffff"
         }
       ]
     },
