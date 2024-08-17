@@ -14,9 +14,7 @@ export class GamePanel extends Laya.Script {
         this.txt_Best = this.owner.getChildByName("txt_Best") as Laya.Text;
         this.txt_Last = this.owner.getChildByName("txt_Last") as Laya.Text;
         this.txt_Score = this.owner.getChildByName("txt_Score") as Laya.Text;
-        this.owner
-            .getChildByName("btn_Pause")
-            .on(Laya.Event.CLICK, this, this.pauseBtnClick);
+        this.owner.getChildByName("btn_Pause").on(Laya.Event.CLICK, this, this.pauseBtnClick);
 
         // 用代码去加载字体文件，现在的版本不需要下面的代码在测试环境字体显示还是正常的
         Laya.loader.load(
@@ -41,15 +39,14 @@ export class GamePanel extends Laya.Script {
         // 每生存一段时间，就增加分数
         Laya.timer.loop(300, this, this.AddScore);
         Laya.stage.on("AddScore", this, this.AddScore);
+        Laya.stage.on("GameOver", this, () => {
+            this.owner.visible = false;
+        });
     }
     Init() {
         // 去本地存储中获得数据,如果没有数据，则返回null
-        this.txt_Last.text = `Last:${
-            Laya.LocalStorage.getItem("LastScore") || "0"
-        }`;
-        this.txt_Best.text = `Best:${
-            Laya.LocalStorage.getItem("BestScore") || "0"
-        }`;
+        this.txt_Last.text = `Last:${Laya.LocalStorage.getItem("LastScore") || "0"}`;
+        this.txt_Best.text = `Best:${Laya.LocalStorage.getItem("BestScore") || "0"}`;
         this.txt_Score.text = `0`;
         this.score = 0;
     }

@@ -8,5 +8,6 @@ export class MainSceneBase extends Laya.Scene {
     public StartPanel!: Laya.Sprite;
     public GamePanel!: Laya.Sprite;
     public PausePanel!: Laya.Sprite;
+    public GameOverPanel!: Laya.Sprite;
 }
 
