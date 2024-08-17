@@ -21,14 +21,19 @@ export class StartPanel extends Laya.Script {
         this.owner.visible = false;
         // 派发事件
         Laya.stage.event("StartGame");
+        Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
     }
     btnAudioOnClick() {
         this.btn_AudioOff.visible = true;
         this.btn_AudioOn.visible = false;
+        Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
+        Laya.SoundManager.muted = true;
     }
     btnAudioOffClick() {
         this.btn_AudioOff.visible = false;
         this.btn_AudioOn.visible = true;
+        Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
+        Laya.SoundManager.muted = false;
     }
 
     public HomeButtonClick() {

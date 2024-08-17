@@ -21,6 +21,7 @@ export class Player extends Laya.Script {
 
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
+        Laya.SoundManager.playMusic("resources/Sounds/FutureWorld_Dark_Loop_03.ogg", 0);
         Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.MouseDown);
         Laya.stage.on(Laya.Event.MOUSE_UP, this, this.MouseUp);
         // 事件监听
@@ -84,11 +85,13 @@ export class Player extends Laya.Script {
     }
     onTriggerEnter(other: Laya.ColliderBase, self?: Laya.ColliderBase, contact?: any): void {
         if (other.label.match(/^Car/)) {
+            Laya.SoundManager.playSound("resources/Sounds/CarCrash.ogg", 1);
             // 游戏结束
             Laya.stage.event("GameOver");
             this.isStartGame = false;
         }
         if (other.label == "Coin") {
+            Laya.SoundManager.playSound("resources/Sounds/Bonus.ogg", 1);
             // 移除金币
             other.owner.removeSelf();
             // 通知脚本进行回收对象

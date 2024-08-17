@@ -14,9 +14,7 @@ export class PausePanel extends Laya.Script {
         Laya.loader.load(
             "resources/font.ttf",
             Laya.Handler.create(this, (font: FontFace) => {
-                const txt_Pause = this.owner.getChildByName(
-                    "txt_Pause"
-                ) as Laya.Text;
+                const txt_Pause = this.owner.getChildByName("txt_Pause") as Laya.Text;
                 txt_Pause.font = font.family;
             }),
             null,
@@ -24,53 +22,41 @@ export class PausePanel extends Laya.Script {
         );
 
         this.owner.getChildByName("btn_Home").on(Laya.Event.CLICK, this, () => {
+            Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
             Laya.timer.resume();
             this.owner.visible = false;
             // 通知主页面板
-            this.owner.parent
-                .getChildByName("StartPanel")
-                .getComponent(StartPanel)
-                .HomeButtonClick();
+            this.owner.parent.getChildByName("StartPanel").getComponent(StartPanel).HomeButtonClick();
             // 通知游戏管理器
             this.owner.parent.getComponent(GameManager).HomeButtonClick();
             // 通知玩家小车进行重置
-            this.owner.parent
-                .getChildByName("player")
-                .getComponent(Player)
-                .Reset();
+            this.owner.parent.getChildByName("player").getComponent(Player).Reset();
         });
-        this.owner
-            .getChildByName("btn_Close")
-            .on(Laya.Event.CLICK, this, () => {
-                // 回复时钟
-                Laya.timer.resume();
-                // 将暂停视图隐藏
-                this.owner.visible = false;
-                // 广播开始游戏
-                Laya.stage.event("StartGame");
-            });
-        this.owner
-            .getChildByName("btn_Restart")
-            .on(Laya.Event.CLICK, this, () => {
-                Laya.timer.resume();
-                this.owner.visible = false;
-                // 通知游戏管理器
-                this.owner.parent
-                    .getComponent(GameManager)
-                    .RestartButtonClick();
-                Laya.stage.event("StartGame");
-                // 通知玩家小车进行重置
-                this.owner.parent
-                    .getChildByName("player")
-                    .getComponent(Player)
-                    .Reset();
-            });
-        this.owner
-            .getChildByName("btn_AudioOn")
-            .on(Laya.Event.CLICK, this, () => {});
-        this.owner
-            .getChildByName("btn_AudioOff")
-            .on(Laya.Event.CLICK, this, () => {});
+        this.owner.getChildByName("btn_Close").on(Laya.Event.CLICK, this, () => {
+            Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
+            // 回复时钟
+            Laya.timer.resume();
+            // 将暂停视图隐藏
+            this.owner.visible = false;
+            // 广播开始游戏
+            Laya.stage.event("StartGame");
+        });
+        this.owner.getChildByName("btn_Restart").on(Laya.Event.CLICK, this, () => {
+            Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
+            Laya.timer.resume();
+            this.owner.visible = false;
+            // 通知游戏管理器
+            this.owner.parent.getComponent(GameManager).RestartButtonClick();
+            Laya.stage.event("StartGame");
+            // 通知玩家小车进行重置
+            this.owner.parent.getChildByName("player").getComponent(Player).Reset();
+        });
+        this.owner.getChildByName("btn_AudioOn").on(Laya.Event.CLICK, this, () => {
+            Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
+        });
+        this.owner.getChildByName("btn_AudioOff").on(Laya.Event.CLICK, this, () => {
+            Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
+        });
 
         // 监听到暂停事件的时候将暂停视图显示
         Laya.stage.on("Pause", this, () => {

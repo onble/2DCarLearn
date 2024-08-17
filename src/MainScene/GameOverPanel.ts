@@ -27,6 +27,7 @@ export class GameOverPanel extends Laya.Script {
         );
 
         this.owner.getChildByName("btn_Home").on(Laya.Event.CLICK, this, () => {
+            Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
             this.owner.visible = false;
             // 通知主页面板
             this.owner.parent.getChildByName("StartPanel").getComponent(StartPanel).HomeButtonClick();
@@ -36,6 +37,7 @@ export class GameOverPanel extends Laya.Script {
             this.owner.parent.getChildByName("player").getComponent(Player).Reset();
         });
         this.owner.getChildByName("btn_Restart").on(Laya.Event.CLICK, this, () => {
+            Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
             this.owner.visible = false;
             // 通知游戏管理器
             this.owner.parent.getComponent(GameManager).RestartButtonClick();

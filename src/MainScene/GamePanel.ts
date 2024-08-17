@@ -62,6 +62,7 @@ export class GamePanel extends Laya.Script {
         this.txt_Score.text = this.score.toString();
     }
     pauseBtnClick() {
+        Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
         Laya.timer.pause();
         // 将游戏视图隐藏
         this.owner.visible = false;
