@@ -11,7 +11,7 @@ export class Player extends Laya.Script {
     /** 限制小汽车的横向移动距离 */
     private _playerMinx = 200;
     private _playerMaxX = 880;
-    private isStartGame = false;
+    public isStartGame = false;
 
     // 车道信息
     // x 260 450 640 820

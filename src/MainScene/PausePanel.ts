@@ -46,7 +46,13 @@ export class PausePanel extends Laya.Script {
             // 将暂停视图隐藏
             this.owner.visible = false;
             // 广播开始游戏
-            Laya.stage.event("StartGame");
+            // Laya.stage.event("StartGame");
+            // 实现继续游戏的逻辑
+            // 下面的操作很危险
+            const GamePanel = (this.owner.parent.getChildByName("GamePanel") as Laya.Sprite) || Assert.ChildNotNull;
+            GamePanel.visible = true;
+            const player = (this.owner.parent.getChildByName("player") as Laya.Sprite) || Assert.ChildNotNull;
+            player.getComponent(Player).isStartGame = true;
         });
         this.owner.getChildByName("btn_Restart").on(Laya.Event.CLICK, this, () => {
             Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
