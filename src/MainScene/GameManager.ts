@@ -1,3 +1,5 @@
+import { Assert } from "../util/assert";
+import { AutoMove } from "./AutoMove";
 import { Car } from "./Car";
 
 const { regClass, property } = Laya;
@@ -73,22 +75,43 @@ export class GameManager extends Laya.Script {
         // x 190 380 570 760
         // 下面去随机生成的位置
         const arrX = [190, 380, 570, 760];
-        const y = -300;
-        const x = arrX[this.getRandom(0, arrX.length - 1)];
+        const y = -600;
+        const carPosIndex = this.getRandom(0, arrX.length - 1);
+        const x = arrX[carPosIndex];
 
-        const carIndex = this.getRandom(0, this.carPrefabArr.length - 1);
+        const carTypeIndex = this.getRandom(0, this.carPrefabArr.length - 1);
         // 注意，如果对象池传入的名字以数字开头，会报错崩溃
-        const sign: string = `Car${carIndex}`;
+        const sign: string = `Car${carTypeIndex}`;
 
-        const carPrefab = this.carPrefabArr[carIndex];
-        const car = Laya.Pool.getItemByCreateFun(
-            sign,
-            carPrefab.create,
-            carPrefab
-        ) as Laya.Sprite | Laya.Box;
+        const carPrefab = this.carPrefabArr[carTypeIndex];
+        const car = Laya.Pool.getItemByCreateFun(sign, carPrefab.create, carPrefab) as Laya.Sprite | Laya.Box;
         // const car = carPrefab.create() as Laya.Sprite | Laya.Box;
-        // 将标识符传递给Car的管理脚本
+        // 获得控制汽车的脚本
+        const carScript = car.getComponent(Car) || Assert.ComponentNotNull;
         car.pos(x, y);
+        // 根据位置控制双向车道不同的逻辑
+        switch (carPosIndex) {
+            // 左边的车辆 让左边的车辆反向
+            case 0:
+                car.scaleY = -1;
+                carScript.speed = 22;
+                break;
+            case 1:
+                car.scaleY = -1;
+                carScript.speed = 25;
+                break;
+            // 右边的车辆
+            case 2:
+                car.scaleY = 1;
+                carScript.speed = 17;
+                break;
+            case 3:
+                car.scaleY = 1;
+                carScript.speed = 14;
+                break;
+            default:
+                throw new Error("出现意外的carPosIndex值");
+        }
         this.owner.addChild(car);
         car.getComponent(Car).Init(sign);
         // 将car对象存储，最后清屏的时候拿到清除
