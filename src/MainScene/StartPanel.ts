@@ -16,6 +16,8 @@ export class StartPanel extends Laya.Script {
         this.btn_Play.on(Laya.Event.CLICK, this, this.btnPlayClick);
         this.btn_AudioOn.on(Laya.Event.CLICK, this, this.btnAudioOnClick);
         this.btn_AudioOff.on(Laya.Event.CLICK, this, this.btnAudioOffClick);
+        // 监听Mute静音变化
+        Laya.stage.on("Mute", this, this.renderMuteButton);
     }
     btnPlayClick() {
         this.owner.visible = false;
@@ -28,16 +30,33 @@ export class StartPanel extends Laya.Script {
         this.btn_AudioOn.visible = false;
         Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
         Laya.SoundManager.muted = true;
+        // 将静音的事件通过事件传递来通知暂停面板，静音状态的改变
+        Laya.stage.event("Mute", true);
     }
     btnAudioOffClick() {
         this.btn_AudioOff.visible = false;
         this.btn_AudioOn.visible = true;
         Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
         Laya.SoundManager.muted = false;
+        // 将静音的事件通过事件传递来通知暂停面板，静音状态的改变
+        Laya.stage.event("Mute", false);
     }
 
     public HomeButtonClick() {
         this.owner.visible = true;
+    }
+    /**
+     * 渲染静音按钮
+     * @param isMute 是否静音
+     */
+    renderMuteButton(isMute: boolean) {
+        if (isMute) {
+            this.btn_AudioOn.visible = false;
+            this.btn_AudioOff.visible = true;
+        } else {
+            this.btn_AudioOn.visible = true;
+            this.btn_AudioOff.visible = false;
+        }
     }
 
     //组件被启用后执行，例如节点被添加到舞台后

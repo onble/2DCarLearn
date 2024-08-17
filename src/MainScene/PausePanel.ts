@@ -1,3 +1,4 @@
+import { Assert } from "../util/assert";
 import { GameManager } from "./GameManager";
 import { Player } from "./Player";
 import { StartPanel } from "./StartPanel";
@@ -8,8 +9,14 @@ const { regClass, property } = Laya;
 export class PausePanel extends Laya.Script {
     declare owner: Laya.Sprite;
 
+    private _btn_AudioOn: Laya.Button;
+    private _btn_AudioOff: Laya.Button;
+
     //组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
     onAwake(): void {
+        // 给绑定组件
+        this._btn_AudioOn = (this.owner.getChildByName("btn_AudioOn") as Laya.Button) || Assert.ChildNotNull;
+        this._btn_AudioOff = (this.owner.getChildByName("btn_AudioOff") as Laya.Button) || Assert.ChildNotNull;
         // 用代码去加载字体文件，现在的版本不需要下面的代码在测试环境字体显示还是正常的
         Laya.loader.load(
             "resources/font.ttf",
@@ -51,17 +58,42 @@ export class PausePanel extends Laya.Script {
             // 通知玩家小车进行重置
             this.owner.parent.getChildByName("player").getComponent(Player).Reset();
         });
-        this.owner.getChildByName("btn_AudioOn").on(Laya.Event.CLICK, this, () => {
+        this._btn_AudioOn.on(Laya.Event.CLICK, this, () => {
             Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
+            this._btn_AudioOn.visible = false;
+            this._btn_AudioOff.visible = true;
+            Laya.SoundManager.muted = true;
+            // 将静音的事件通过事件传递来通知暂停面板，静音状态的改变
+            Laya.stage.event("Mute", true);
         });
-        this.owner.getChildByName("btn_AudioOff").on(Laya.Event.CLICK, this, () => {
+        this._btn_AudioOff.on(Laya.Event.CLICK, this, () => {
             Laya.SoundManager.playSound("resources/Sounds/ButtonClick.ogg", 1);
+            this._btn_AudioOn.visible = true;
+            this._btn_AudioOff.visible = false;
+            Laya.SoundManager.muted = false;
+            // 将静音的事件通过事件传递来通知暂停面板，静音状态的改变
+            Laya.stage.event("Mute", false);
         });
 
         // 监听到暂停事件的时候将暂停视图显示
         Laya.stage.on("Pause", this, () => {
             this.owner.visible = true;
         });
+        // 监听Mute静音变化
+        Laya.stage.on("Mute", this, this.renderMuteButton);
+    }
+    /**
+     * 渲染静音按钮
+     * @param isMute 是否静音
+     */
+    renderMuteButton(isMute: boolean) {
+        if (isMute) {
+            this._btn_AudioOn.visible = false;
+            this._btn_AudioOff.visible = true;
+        } else {
+            this._btn_AudioOn.visible = true;
+            this._btn_AudioOff.visible = false;
+        }
     }
 
     //组件被启用后执行，例如节点被添加到舞台后
